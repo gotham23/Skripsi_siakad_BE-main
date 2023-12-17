@@ -58,7 +58,6 @@ apiRouter.put('/api/v1/activ/:id/update',ctrl.middleware.isLogin, ctrl.middlewar
 apiRouter.delete("/api/v1/activ/:id/delete", ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.middleware.getActivity, ctrl.api.v1.activity.deleteActivity)
 
 //// route Admin data guru
-
 apiRouter.post('/api/v1/guru',ctrl.middleware.isLogin, ctrl.middleware.isAdmin,  ctrl.api.v1.guru.createGuru);
 apiRouter.get('/api/v1/:id/guru',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.guru.getGuru);
 apiRouter.put('/api/v1/guru/:id/update',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.middleware.getGuru, ctrl.api.v1.guru.updateGuru);
@@ -66,7 +65,7 @@ apiRouter.delete("/api/v1/guru/:id/delete", ctrl.middleware.isLogin, ctrl.middle
 
 /// route Admin data siswa
 apiRouter.post('/api/v1/siswa',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.siswa.createSiswa);
-apiRouter.put('/api/v1//:id/siswa',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.siswa.updateSiswa);
+apiRouter.put('/api/v1/siswa/:id/update',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.siswa.updateSiswa);
 apiRouter.delete('/api/v1/:id/siswa',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.siswa.deleteSiswa);
 apiRouter.get('/api/v1/siswa/kelas',ctrl.middleware.isLogin, ctrl.api.v1.siswa.getAllSiswaKelas);
 apiRouter.get('/api/v1/siswa',ctrl.middleware.isLogin, ctrl.api.v1.siswa.getAllSiswa);
@@ -74,6 +73,7 @@ apiRouter.get("/api/v1/filter-siswa", ctrl.middleware.isLogin, ctrl.middleware.f
 // route  nilai guru
 apiRouter.post('/api/v1/penilaian',ctrl.middleware.isLogin, ctrl.api.v1.penilaian.createPenilaian);
 apiRouter.get('/api/v1/:id/penilaian',ctrl.middleware.isLogin, ctrl.api.v1.penilaian.getPenilaian);
+apiRouter.put('/api/v1/penilaian/:id/update',ctrl.middleware.isLogin, ctrl.api.v1.penilaian.updatePenilaian);
 
 // route  penilaian guru
 

@@ -41,8 +41,9 @@ async create(req) {
     if (mapelType == null) {
       return { error: 404, msg: 'mata pelajaran tidak tersedia' };
     } 
- 
-    
+  if (!req.body.nilai) {
+    return {error: 404, msg: 'harap masukan nilai' }  
+  } 
       let penilaian = await penilaianRepo.create(args);
       return { penilaian };
     } catch (error) {
@@ -65,5 +66,15 @@ async create(req) {
     } catch (error) {
       
     }
+  },
+  async deleteNilai (req) {
+    try {
+      let deleted = await penilaianRepo.delete(req.penilaian.id);
+      return { deleted };
+    } catch (error) {
+      console.log(error);
+      return { error: 400, msg: error ? error : 'Bad request server function' };
+    }
   }
+
 }
