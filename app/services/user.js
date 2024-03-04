@@ -228,7 +228,7 @@ module.exports = {
       return { error: 400, msg: error ? error : 'Bad request server function' };
     }
   },
-  async updateUser(req, isAdmin = true) {
+  async updateUser(req, isAdmin = false) {
     let idTarget = undefined;
     isAdmin ? (idTarget = req.targetUser) : (idTarget = req.user.id);
     try {
