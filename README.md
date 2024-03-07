@@ -23,8 +23,26 @@ Di dalam repository ini sudah terdapat beberapa script yang dapat digunakan dala
 - salam FAhrez
 
 - langkah localhost
-- 1. `yarn db:create`
-- 2. `yarn db:migrate`
-- 3. `yarn db:seed`
+1. `yarn db:create`, (membuat database)
+2. `yarn db:migrate`, (migrate database)
+3. `yarn db:seed`, (menambahkan data seeder)
 
-- pastikan postgress sudah terhudubng ganti di di .env password nya dan namanya
+## pastikan postgress sudah terhudubng ganti di di .env password nya dan namanya
+- contoh
+-  DB_USERNAME = postgres
+-  DB_PASSWORD = maryam23 (sesuaikan password)
+-  DB_HOST = 127.0.0.1
+-  DB_NAME = railway2     (sesuaikan)
+-  DB_PORT = 5432         (sesuaikan)
+-  API_URL = http://localhost:3000 (sesuaikan)
+
+### Contoh Login
+## ADMIN
+- Admin username : admin,
+- admin pass : admin,
+## USER
+- user username : Pahri,
+- user pass : admin,
+
+## UNTUK RUNNING
+- yarn develop
