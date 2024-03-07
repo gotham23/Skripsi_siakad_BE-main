@@ -21,3 +21,10 @@ Di dalam repository ini sudah terdapat beberapa script yang dapat digunakan dala
 - setelah berhasil login untuk pertama kali user mohon disarankan mengganti email, password dan foto
 
 - salam FAhrez
+
+- langkah localhost
+- 1. `yarn db:create`
+- 2. `yarn db:migrate`
+- 3. `yarn db:seed`
+
+- pastikan postgress sudah terhudubng ganti di di .env password nya dan namanya
