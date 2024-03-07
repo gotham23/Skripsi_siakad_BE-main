@@ -22,7 +22,7 @@ Di dalam repository ini sudah terdapat beberapa script yang dapat digunakan dala
 
 - salam FAhrez
 
-- langkah localhost
+### langkah localhost
 1. `yarn db:create`, (membuat database)
 2. `yarn db:migrate`, (migrate database)
 3. `yarn db:seed`, (menambahkan data seeder)
