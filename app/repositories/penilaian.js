@@ -7,8 +7,13 @@ module.exports = {
     getDetail(args){ 
         return Penilaians.findOne({where: args})
     },
-    delete(args){
-        return Penilaians.delete({
+    update(id, args) {
+        return Penilaians.update(args, {
+          where: { id }
+        });
+      },
+    destroy(args){
+        return Penilaians.destroy({
             where: args
         })
     },

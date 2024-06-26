@@ -51,25 +51,22 @@ async create(req) {
       return { error: 400, msg: error ? error : 'Bad request server function' };
     }
   },
-  async update (req){
+  async update(req) {
     let args = {
-      user_id: req.user.id,
-      siswa_id: req.body.siswa_id,
-      type: req.body.type,
       nilai: req.body.nilai,
       deleted: false,
     };
     try {
-      let update = await penilaianRepo.update(req.penilaian.id, args)
-        return {update};
-      
+      let update = await penilaianRepo.update(req.params.id, args);
+      return { success: true, update };
     } catch (error) {
-      
+      console.log(error);
+      return { success: false, error: error.message };
     }
   },
   async deleteNilai (req) {
     try {
-      let deleted = await penilaianRepo.delete(req.penilaian.id);
+      let deleted = await penilaianRepo.destroy({id: req.params.id});
       return { deleted };
     } catch (error) {
       console.log(error);

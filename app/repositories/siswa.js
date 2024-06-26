@@ -15,12 +15,8 @@ module.exports = {
   // Menggunakan metode soft delete
   delete(id) {
     return Siswas.update(
-      {
-        deleted: true,
-      },
-      {
-        where: { id },
-      }
+      { deleted: true },
+      { where: { id } }
     );
   },
   find(argsWhere) {

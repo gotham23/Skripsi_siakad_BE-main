@@ -27,21 +27,18 @@ module.exports = {
           });
       },
       updatePenilaian(req, res) {
-        penilaianService
-          .update(req)
-          .then((data) => {
-            if (data.error) {
-              res.status(data.error).json({ errors: [data.msg] });
-            } else {
-              res.status(200).json(data);
-            }
-          })
-          .catch((err) => {
-            res.status(400).json({ errors: [err] });
-          });
+        penilaianService.update(req).then(data => {
+          if (data.success) {
+            res.status(200).json(data.update);
+          } else {
+            res.status(400).json({ errors: [data.error] });
+          }
+        }).catch(err => {
+          res.status(400).json({ errors: [err] });
+        });
       },
       deletePenilaian(req, res){
-        penilaianService.deletePenilaian(req).then(data => {
+        penilaianService.deleteNilai(req).then(data => {
             if(data.error){
                 res.status(data.error).json({errors: [data.msg]})
             }else{

@@ -31,10 +31,9 @@ module.exports = {
   })
 },
 
-  find(argsWhere) {
-    console.log(argsWhere);
-    return Dinas.findOne({ where: argsWhere, include: [{ all: true, nested: true }] });
-  },
+find(argsWhere) {
+  return Dinas.findOne({ where: argsWhere, include: [{ all: true, nested: true }] });
+},
   findAll(argsWhere) {
     return Dinas.findAll({ where: argsWhere, include: [{ all: true, nested: true }] });
   },

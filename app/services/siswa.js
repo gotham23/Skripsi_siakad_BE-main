@@ -100,7 +100,7 @@ module.exports = {
       return { error: 400, msg: error ? error : 'Bad request server function' };
       }
   },
-  async deleteSiswa (req) {
+  async delete (req) {
     try {
       let deleted = await siswaRepo.delete(req.siswa.id);
       return { deleted };
