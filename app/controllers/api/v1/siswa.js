@@ -49,21 +49,20 @@ module.exports = {
       });
   },
   updateSiswa(req, res) {
-    siswaService
-      .update(req)
-      .then((data) => {
+    siswaService.update(req)
+      .then(data => {
         if (data.error) {
           res.status(data.error).json({ errors: [data.msg] });
         } else {
           res.status(200).json(data);
         }
       })
-      .catch((err) => {
-        res.status(400).json({ errors: [err] });
+      .catch(err => {
+        res.status(400).json({ errors: [err.message || 'Unknown error'] });
       });
   },
   deleteSiswa(req, res){
-    siswaService.deleteSiswa(req).then(data => {
+    siswaService.delete(req).then(data => {
         if(data.error){
             res.status(data.error).json({errors: [data.msg]})
         }else{

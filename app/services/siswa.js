@@ -70,39 +70,43 @@ module.exports = {
       return { error: 400, msg: error ? error : 'Bad request server function' };
     }
   },
-  async update (req) {
-      let args = {
-        nama: req.body.nama,
-        nis: req.body.nis,
-        nisn: req.body.nisn,
-        no_kk: req.body.no_kk,
-        no_ijazah: req.body.no_ijazah,
-        jenis_kelamin: req.body.jenis_kelamin,
-        lhr_tempat: req.body.lhr_tempat,
-        lhr_tbt: req.body.lhr_tbt,
-        no_telp: req.body.no_telp,
-        agama: req.body.jabagamaatan,
-        alamat: req.body.alamat,
-        ayah: req.body.ayah,
-        no_ayah: req.body.no_ayah,
-        ibu: req.body.ibu,
-        no_ibu: req.body.no_ibu,
-        kelas: req.body.kelas,
-        jurusan: req.body.jurusan,
-        deleted: false,
+  async update(req) {
+    const args = {
+      nama: req.body.nama,
+      nis: req.body.nis,
+      nisn: req.body.nisn,
+      no_kk: req.body.no_kk,
+      no_ijazah: req.body.no_ijazah,
+      jenis_kelamin: req.body.jenis_kelamin,
+      lhr_tempat: req.body.lhr_tempat,
+      lhr_tbt: req.body.lhr_tbt,
+      no_telp: req.body.no_telp,
+      agama: req.body.agama,
+      alamat: req.body.alamat,
+      ayah: req.body.ayah,
+      no_ayah: req.body.no_ayah,
+      ibu: req.body.ibu,
+      no_ibu: req.body.no_ibu,
+      kelas: req.body.kelas,
+      jurusan: req.body.jurusan,
+      deleted: false,
+    };
+
+    try {
+      let updated = await siswaRepo.update(req.params.id, args);
+      if (updated[0] === 0) {
+        return { error: 404, msg: 'Data Siswa tidak ditemukan' };
       }
-      try {
-        let update = await siswaRepo.update(req.siswa.id, args)
-        return {update};
-        
-      } catch (error) {
-        console.log(error);
-      return { error: 400, msg: error ? error : 'Bad request server function' };
-      }
+      console.log("Data Siswa berhasil diperbarui");
+      return { updated };
+    } catch (error) {
+      console.log(error);
+      return { error: 400, msg: error.message || 'Bad request server function' };
+    }
   },
   async delete (req) {
     try {
-      let deleted = await siswaRepo.delete(req.siswa.id);
+      let deleted = await siswaRepo.destroy({id: req.params.id});
       return { deleted };
     } catch (error) {
       console.log(error);

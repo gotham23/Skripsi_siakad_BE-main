@@ -11,11 +11,10 @@ module.exports = {
   },
   updateMailForm(req, res, next) {
     if (
-      req.body.kepada == undefined ||
-       req.body.subjek == undefined ||
-        req.body.image == undefined) {
-        res.status(403).json({ errors: ["Semua field update surat wajib diisi"] })
-        return
+      req.body.image == undefined) {
+        console.log(req.body);
+        res.status(403).json({ errors: ['field lampiran surat wajib diisi'] });
+        return;
     }
     next()
 },

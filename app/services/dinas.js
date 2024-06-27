@@ -51,6 +51,17 @@ const generatePDF = async (dinasData) => {
 module.exports = {
   generatePDF,
 
+
+  async getAllDinas(req) {
+    try {
+      let dinas = JSON.parse(JSON.stringify(await dinasRepo.findAll({ deleted: false})));
+      return { dinas };
+    } catch (error) {
+      console.log(error);
+      return { error: 400, msg: error ? error : 'Bad request server function' };
+    }
+    
+  },
   async getAllDinasvalid(req) {
     try {
       let dinas = JSON.parse(JSON.stringify(await dinasRepo.findAllValid({ deleted: false, validation: true })));
@@ -137,7 +148,7 @@ try{
 
   async deleteDinas(req) {
     try {
-      let deleted = await dinasRepo.delete(req.dinas.id);
+      let deleted = await dinasRepo.destroy({id: req.params.id});
       console.log("Surat dinas berhasil dihapus");
       return { deleted };
     } catch (error) {

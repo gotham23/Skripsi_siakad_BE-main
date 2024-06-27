@@ -7,16 +7,26 @@ module.exports = {
   },
   update(id, args) {
     return Siswas.update(args, {
-        where: {
-            id
-        }
-    })
+      where: { id }
+    });
+  },
+destroy(args){
+  return Siswas.destroy(
+    {
+      where: args
+    }
+  );
 },
-  // Menggunakan metode soft delete
   delete(id) {
     return Siswas.update(
-      { deleted: true },
-      { where: { id } }
+      {
+        deleted: true,
+      },
+      {
+        where: {
+          id,
+        },
+      }
     );
   },
   find(argsWhere) {

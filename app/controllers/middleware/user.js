@@ -31,7 +31,7 @@ module.exports = {
   },
   updateUser(req, res, next) {
     console.log(req.body);
-    if (req.body.username === undefined || req.body.email === undefined || req.body.title === undefined || req.body.f_name === undefined || req.body.l_name === undefined) {
+    if (req.body.username === undefined || req.body.email === undefined || req.body.f_name === undefined || req.body.l_name === undefined) {
       res.status(404).json({ errors: ['Semua kolom wajib diisi'] });
       return;
     }
@@ -40,9 +40,6 @@ module.exports = {
         res.status(404).json({ errors: ['Konfirmasi password tidak sama'] });
         return;
       }
-    }
-    if (req.body.title != '') {
-      req.body.username = req.body.title + '. ' + req.body.username;
     }
     next();
   },

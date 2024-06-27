@@ -7,19 +7,13 @@ module.exports = {
   },
   update(id, args) {
     return Mails.update(args, {
-        where: {
-            id
-        }
-    })
-},
-  // Menggunakan metode soft delete
-  delete(id) {
-    return Mails.update(
+      where: { id }
+    });
+  },
+  destroy(args) {
+    return Mails.destroy(
       {
-        deleted: true,
-      },
-      {
-        where: { id },
+        where:  args ,
       }
     );
   },

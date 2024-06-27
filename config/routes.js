@@ -21,22 +21,26 @@ apiRouter.use(express.static(path.join(__dirname, '../bin/public')));
  *       implementations
  */
 
+//// Opsional
+apiRouter.put('/api/v1/dinas/:id/delete',ctrl.middleware.isLogin,ctrl.middleware.getDinas, ctrl.api.v1.dinas.deleteDinas);
+apiRouter.get('/api/v1/user', ctrl.api.v1.auths.getAllUser);
+
 ////route umum
 apiRouter.post('/api/v1/login', ctrl.middleware.login, ctrl.api.v1.auths.login);
 apiRouter.get('/api/v1/who-am-i', ctrl.middleware.isLogin, ctrl.api.v1.auths.whoAmI);
 apiRouter.put('/api/v1/update-profile', ctrl.middleware.isLogin, uploadUser.single('image'), ctrl.middleware.uploadHandler, ctrl.middleware.updateUser, ctrl.api.v1.auths.updateProfile);
 
-// apiRouter.post('/api/v1/login', ctrl.middleware.login, ctrl.api.v1.auths.login);
+
 // apiRouter.post('/api/v1/register', ctrl.middleware.register, ctrl.api.v1.auths.register);
 
 // apiRouter.post('/api/v1/register', ctrl.middleware.auths.register, ctrl.api.v1.auths.register);
 
 apiRouter.get('/api/v1/guru',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.guru.getAllGuru);///umum
 //// route Admin surat keluar
-apiRouter.get('/api/v1/mails',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.mail.getAllMail);
+apiRouter.get('/api/v1/mail',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.mail.getAllMail);
 apiRouter.get('/api/v1/:id/mail',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.api.v1.mail.getMail);
 apiRouter.post('/api/v1/mail',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, uploadMail.single('image'), ctrl.middleware.uploadHandler, ctrl.api.v1.mail.createMail);
-apiRouter.put('/api/v1/mail/:id/update',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.middleware.getMail, ctrl.middleware.updateMailForm, ctrl.api.v1.mail.updateMail);
+apiRouter.put('/api/v1/mail/:id/update',ctrl.middleware.isLogin, ctrl.middleware.isAdmin, uploadMail.single('image'), ctrl.middleware.uploadHandler, ctrl.api.v1.mail.updateMail);
 apiRouter.delete("/api/v1/mail/:id/delete", ctrl.middleware.isLogin, ctrl.middleware.isAdmin, ctrl.middleware.getMail, ctrl.api.v1.mail.deleteMail)
 
 //// route umum surat dinas '
@@ -48,6 +52,7 @@ apiRouter.delete('/api/v1/dinas/:id/delete',ctrl.middleware.isLogin,ctrl.middlew
 apiRouter.post('/api/v1/dinas',ctrl.middleware.isLogin, ctrl.api.v1.dinas.createDinas);
 //// route surat dinas admin'
 apiRouter.put('/api/v1/dinas/:id/validation',ctrl.middleware.isLogin,ctrl.middleware.getDinas, ctrl.api.v1.dinas.validationDinas);
+apiRouter.put('/api/v1/dinas/:id/update',ctrl.middleware.isLogin,ctrl.middleware.getDinas, ctrl.api.v1.dinas.updateDinas);
 
 
 //// route Admin jadwal kegiatan

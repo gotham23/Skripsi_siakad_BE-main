@@ -2,7 +2,7 @@ const fs = require('node:fs');
 const path = require('path');
 
 const pubDir = path.join(__dirname, '../../services');
-const pubDir2 = path.join(__dirname, '../../../bin/public');
+const pubDir2 = path.join(__dirname, '../../services');
 
 const isImageOrPdf = (mimetype) => {
     const allowedTypes = ["image/png", "image/jpg", "image/jpeg", "application/pdf"];

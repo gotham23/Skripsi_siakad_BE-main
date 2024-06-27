@@ -12,14 +12,11 @@ module.exports = {
         }
     })
 },
-  // Menggunakan metode soft delete
-  delete(id) {
-    return Dinas.update(
+  
+  destroy(args) {
+    return Dinas.destroy(
       {
-        deleted: true,
-      },
-      {
-        where: { id },
+        where:  args ,
       }
     );
   },

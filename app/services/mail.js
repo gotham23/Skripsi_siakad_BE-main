@@ -73,14 +73,14 @@ module.exports = {
   async update (req) {
       let args = {
         to: req.body.kepada,
-        subject: req.body.subjek,
-        text: req.body.isi,
-        lampiran: req.body.image,
-        deleted: false,
+      subject: req.body.subjek,
+      text: req.body.isi,
+      lampiran: req.body.image,
+      deleted: false,
       }
       try {
-        let update = await mailsRepo.update(req.mail.id, args)
-        verify(req, args);
+        let update = await mailsRepo.update(req.params.id, args)
+        emails(req, args);
         return {update};
         
       } catch (error) {
@@ -90,7 +90,7 @@ module.exports = {
   },
   async deleteMail (req) {
     try {
-      let deleted = await mailsRepo.delete(req.mail.id);
+      let deleted = await mailsRepo.destroy({id: req.params.id});
       return { deleted };
     } catch (error) {
       console.log(error);
